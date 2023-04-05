@@ -1,9 +1,9 @@
-select {
+select{
     message(filter: or(eq(length, 123.0), le(body_length, topic_length)))
 }
 
-select {
-    email {
+select{
+    email(filter: eq(id, 1)) {
         message
     }
 }
@@ -14,23 +14,22 @@ insert{
 
 insert{
     email(values: [{id : 111}], filter: eq(id, "value")) {
-        message(values: [{id : 111}]),
         message(values: [{id : 111}])
     }
 }
 
-update {
+update{
     email (values: [{name : "Andrey"}])
 }
 
-update {
-    email {
+update{
+    email(filter: eq(id, 1)) {
         message(values: [{recipient : "Andrey"}])
     }
 }
 
-delete {
-    email {
-        message
+delete{
+    email(filter: eq(id, 1)) {
+        message(filter: le(length, 50))
     }
 }
