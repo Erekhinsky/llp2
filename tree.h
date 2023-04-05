@@ -63,5 +63,28 @@ ast_node* create_node_with_string_value(char* str_val);
 
 ast_node* create_node_key(char* key);
 
-#endif //LLP2_TREE_H
+ast_node* create_node_element(ast_node* key_node, ast_node* val_node);
 
+ast_node* create_node_set_element(ast_node* element_node);
+
+ast_node* create_node_values(ast_node* element_set_node);
+
+ast_node* create_node_operation(type_node type, ast_node* left, ast_node* right);
+
+ast_node* create_node_filter(ast_node* operation_node);
+
+ast_node* create_node_object(char* schema_name, ast_node* values_node, ast_node* filter_node);
+
+ast_node* create_node_set_query(ast_node* query_node);
+
+ast_node* create_node_query(type_node type, ast_node* object_node, ast_node* query_set_node);
+
+void set_next_element_to_set(ast_node* element_set_node, ast_node* next_element_set_node);
+
+void set_next_query_to_set(ast_node* query_set_node, ast_node* next_query_set_node);
+
+void delete_node(ast_node* node);
+
+void print_node(ast_node* node, int32_t nesting_level);
+
+#endif //LLP2_TREE_H
